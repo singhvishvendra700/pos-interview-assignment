@@ -64,7 +64,7 @@ const CandidateList = ({
 
             <p className="recommendation-note">
               Recommendations are based on your skill requirements and
-              candidate's performance.
+              candidates performance.
             </p>
           </div>
 
