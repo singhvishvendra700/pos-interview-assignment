@@ -1,7 +1,8 @@
 import React from "react";
 import "./CandidateList.css";
 import { API_URL } from "@/utils/config";
-
+import AddIcon from "@mui/icons-material/Add";
+import { Avatar } from "@mui/material";
 const CandidateCard = ({
   candidate,
   isSelected,
@@ -68,8 +69,11 @@ const CandidateCard = ({
 
   return (
     <div className={cardClass} onClick={() => onSelect(candidate)}>
+      <Avatar src="/broken-image.jpg" sx={{ width: 32, height: 32 }} />
       <span className="candidate-name">{candidate.name}</span>
-      <button className="add-button">+</button>
+      <button className="add-button">
+        <AddIcon />
+      </button>
     </div>
   );
 };

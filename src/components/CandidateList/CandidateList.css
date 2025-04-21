@@ -82,11 +82,17 @@
   background-color: white;
 }
 
+.avatar {
+  width: 24px;
+  height: 24px;
+}
 
 
 .candidate-name {
+  text-align: left;
   font-size: 14px;
   color: #000;
+  width: 60%;
 }
 
 .add-button {
