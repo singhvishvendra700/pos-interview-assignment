@@ -12,6 +12,7 @@ import FilterAltIcon from "@mui/icons-material/FilterAlt";
 const HeatMap = ({ data }) => {
   const candidateIds = Object.keys(data);
   const [selectedSkills, setSelectedSkills] = useState(allSkills);
+  const [filteredSkills, setFilteredSkills] = useState(allSkills); // ✅ New state
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleCheckboxChange = (skill) => {
@@ -28,6 +29,12 @@ const HeatMap = ({ data }) => {
 
   const closeFilterDropdown = () => {
     setAnchorEl(null);
+  };
+  const handleSearchChange = (e) => {
+    const query = e.target.value.toLowerCase();
+    setFilteredSkills(
+      allSkills.filter((skill) => skill.toLowerCase().includes(query))
+    );
   };
 
   return (
@@ -65,17 +72,10 @@ const HeatMap = ({ data }) => {
               type="text"
               placeholder="Search skill..."
               className="skill-search"
-              onChange={(e) => {
-                const query = e.target.value.toLowerCase();
-                setSelectedSkills(
-                  allSkills.filter((skill) =>
-                    skill.toLowerCase().includes(query)
-                  )
-                );
-              }}
+              onChange={handleSearchChange}
             />
             <div className="skill-checkbox-grid">
-              {allSkills.map((skill) => (
+              {filteredSkills.map((skill) => (
                 <FormControlLabel
                   key={skill}
                   control={
