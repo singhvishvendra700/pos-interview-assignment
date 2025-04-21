@@ -8,6 +8,7 @@ export const Comparison = () => {
   const [selectedCandidates, setSelectedCandidates] = useState([]);
   const [selectedCandidatesData, setSelectedCandidateData] = useState({});
   const job_name = "Post_UXdesigner_sr001";
+
   return (
     <div className="wrapper">
       <div className="header">

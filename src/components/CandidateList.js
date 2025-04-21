@@ -39,7 +39,11 @@ const CandidateList = ({
       <h2 className="title">Most recommended</h2>
 
       {loading ? (
-        <div className="loading-container">Loading</div>
+        <div className="candidate-wrapper">
+          <div className="loading-container">
+            <p>Loading...</p>
+          </div>
+        </div>
       ) : (
         <div className="candidate-wrapper">
           <div className="candidate-group selected-group">
