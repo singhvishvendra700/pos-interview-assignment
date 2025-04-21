@@ -1,0 +1,17 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.candidates{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding: 5px;
+    color: #828282;
+    background-color: white;
+}
+
+.content-wrapper{
+    display: flex;
+}

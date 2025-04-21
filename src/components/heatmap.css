@@ -1,0 +1,105 @@
+ .heatmap-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #000;
+  position: relative;
+  overflow: auto;
+  height: 100vh;
+}
+
+.heatmap-table {
+  border-collapse: separate;
+  border-spacing: 2px;
+  min-width: max-content;
+  width: max-content;
+  table-layout: fixed;
+}
+
+.skill-header,
+.skill-cell {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background-color: #fff;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 14px;
+  border-right: 1px solid #ddd;
+}
+
+.candidate-header {
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+  text-align: center;
+  padding: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000;
+}
+
+.heatmap-row {
+  height: 40px;
+}
+
+.heat-cell {
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+  text-align: center;
+  padding: 3px;
+}
+
+.heat-block {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.heat-block.empty {
+  background-color: #ECFFF1;
+}
+
+.heat-block.low {
+  background-color: #F8F8A7;
+}
+
+.heat-block.medium {
+  background-color: #A6D969;
+}
+
+.heat-block.high {
+  background-color: #269641;
+}
+
+.heat-block.very-high {
+  background-color: #0B3F0B;
+}
+
+.no-candidate-cell {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.select-candidate-btn {
+  background-color: #259653;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
