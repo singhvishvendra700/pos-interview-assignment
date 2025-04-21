@@ -1,41 +1,19 @@
-import { useState } from "react";
-import {
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Menu,
-  MenuItem,
-} from "@mui/material";
-import "./heatmap.css";
-import { allSkills } from "@/utils/skills";
+import { Checkbox, FormControlLabel, Menu } from "@mui/material";
+import "./HeatMap.css";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import { useHeatmap } from "./useHeatmap";
+
 const HeatMap = ({ data }) => {
-  const candidateIds = Object.keys(data);
-  const [selectedSkills, setSelectedSkills] = useState(allSkills);
-  const [filteredSkills, setFilteredSkills] = useState(allSkills); // ✅ New state
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleCheckboxChange = (skill) => {
-    setSelectedSkills((prevSelected) =>
-      prevSelected.includes(skill)
-        ? prevSelected.filter((s) => s !== skill)
-        : [...prevSelected, skill]
-    );
-  };
-
-  const toggleFilterDropdown = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const closeFilterDropdown = () => {
-    setAnchorEl(null);
-  };
-  const handleSearchChange = (e) => {
-    const query = e.target.value.toLowerCase();
-    setFilteredSkills(
-      allSkills.filter((skill) => skill.toLowerCase().includes(query))
-    );
-  };
+  const {
+    candidateIds,
+    selectedSkills,
+    filteredSkills,
+    anchorEl,
+    handleCheckboxChange,
+    toggleFilterDropdown,
+    closeFilterDropdown,
+    handleSearchChange,
+  } = useHeatmap({ data });
 
   return (
     <div className="heatmap-container">

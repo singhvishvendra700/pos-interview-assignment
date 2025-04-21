@@ -1,13 +1,21 @@
 "use client";
 import { useState } from "react";
-import CandidateList from "./CandidateList";
-import HeatMap from "./HeatMap";
-import "./comparison.css";
+import CandidateList from "../CandidateList/CandidateList";
+import HeatMap from "../Heatmap/HeatMap";
+import "./Comparison.css";
 
 export const Comparison = () => {
   const [selectedCandidates, setSelectedCandidates] = useState([]);
   const [selectedCandidatesData, setSelectedCandidateData] = useState({});
   const job_name = "Post_UXdesigner_sr001";
+
+  const renderCandidatetext = (number) => {
+    if (number === 1) {
+      return `${number} Candidate`;
+    } else {
+      return `${number} Candidates`;
+    }
+  };
 
   return (
     <div className="wrapper">
@@ -17,7 +25,9 @@ export const Comparison = () => {
         </div>
         <div className="text-wrapper">
           <h2 className="name">{job_name}</h2>
-          <p className="count">{selectedCandidates?.length} Candidates</p>
+          <p className="count">
+            {renderCandidatetext(selectedCandidates?.length)}
+          </p>
         </div>
       </div>
       <div className="content-wrapper">
