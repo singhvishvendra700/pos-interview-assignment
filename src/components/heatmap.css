@@ -18,6 +18,10 @@
   margin-bottom :20px;
 }
 
+.overlay{
+  opacity: 0.2;
+}
+
 .tab-button {
   background: none;
   border: 1px solid black;
@@ -121,6 +125,7 @@
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+  cursor: not-allowed;
 }
 
 .skill-filter-container {
@@ -156,4 +161,8 @@
   background-color: #f6f6ef;
   border: 1px solid #000;
   cursor: pointer;
+}
+.filter-button:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
 }

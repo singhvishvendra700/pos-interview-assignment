@@ -1,5 +1,6 @@
 .candidate-list-container {
   width: 25%;
+  height: 100vh;
   border: 1px solid #000;
   box-sizing: border-box;
   background-color: white;
@@ -8,15 +9,15 @@
   padding: 0;
   border-bottom: none;
   margin-bottom: 100px;
+  overflow: hidden;
 }
 
 .candidate-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  gap: 64px;
   overflow-y: auto;
+  flex-grow: 1;
 }
 
 .candidate-group {
@@ -24,6 +25,11 @@
   flex-direction: column;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
+  border-left: none;
+}
+
+.candidate-group:last-child {
+  border: none;
 }
 
 .selected-group {
