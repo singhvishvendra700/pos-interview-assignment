@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import "./heatmap.css";
 import { allSkills } from "@/utils/skills";
-
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
 const HeatMap = ({ data }) => {
   const candidateIds = Object.keys(data);
   const [selectedSkills, setSelectedSkills] = useState(allSkills);
@@ -32,26 +32,49 @@ const HeatMap = ({ data }) => {
 
   return (
     <div className="heatmap-container">
-      <Button
-        variant="contained"
-        color="primary"
+      <div className="heatmap-tabs">
+        <button className="tab-button active">Compare View</button>
+        <button className="tab-button">Individual View</button>
+        <button className="tab-button">Shortlisted Candidates</button>
+      </div>
+
+      <button
+        variant="outlined"
         onClick={toggleFilterDropdown}
         disabled={candidateIds.length === 0}
         size="small"
+        className="filter-button"
       >
-        Filter
-      </Button>
+        Filters <FilterAltIcon />
+      </button>
 
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={closeFilterDropdown}
+        PaperProps={{
+          sx: {
+            boxShadow: "none",
+            border: "1px solid #ccc",
+          },
+        }}
       >
-        <div style={{ padding: "1rem" }}>
-          <h3>Select Skills</h3>
-          {allSkills.map((skill) => (
-            <MenuItem key={skill}>
+        <div className="skill-filter-container">
+          <input
+            type="text"
+            placeholder="Search skill..."
+            className="skill-search"
+            onChange={(e) => {
+              const query = e.target.value.toLowerCase();
+              setSelectedSkills(
+                allSkills.filter((skill) => skill.toLowerCase().includes(query))
+              );
+            }}
+          />
+          <div className="skill-checkbox-grid">
+            {allSkills.map((skill) => (
               <FormControlLabel
+                key={skill}
                 control={
                   <Checkbox
                     checked={selectedSkills.includes(skill)}
@@ -61,15 +84,15 @@ const HeatMap = ({ data }) => {
                 }
                 label={skill}
               />
-            </MenuItem>
-          ))}
+            ))}
+          </div>
         </div>
       </Menu>
 
       <table className="heatmap-table">
         <thead>
           <tr>
-            <th className="skill-header">Skills</th>
+            <th className="skill-header"></th>
             {candidateIds.map((id) => (
               <th key={id} className="candidate-header">
                 {data[id].candidateName
