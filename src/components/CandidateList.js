@@ -11,6 +11,7 @@ const CandidateList = ({
   setSelectedCandidateData,
 }) => {
   const [candidates, setCandidates] = useState([]);
+  const [preferredCandidates, setPreferredCandidates] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const getCandidates = async () => {
@@ -19,6 +20,9 @@ const CandidateList = ({
       const candidateData = await fetch(API_URL);
       const response = await candidateData.json();
       setCandidates(response);
+      const shuffled = [...response].sort(() => 0.5 - Math.random());
+      const preferred = shuffled.slice(0, 3);
+      setPreferredCandidates(preferred);
     } catch (err) {
       console.log(err);
     } finally {
@@ -37,18 +41,50 @@ const CandidateList = ({
       {loading ? (
         <div className="loading-container">Loading</div>
       ) : (
-        <div className="candidate-list">
-          {candidates?.map((candidate) => (
-            <CandidateCard
-              key={candidate.id}
-              candidate={candidate}
-              isSelected={selectedCandidates.some((c) => c.id === candidate.id)}
-              selectedCandidates={selectedCandidates}
-              setSelectedCandidates={setSelectedCandidates}
-              selectedCandidatesData={selectedCandidatesData}
-              setSelectedCandidateData={setSelectedCandidateData}
-            />
-          ))}
+        <div className="candidate-wrapper">
+          <div className="candidate-group selected-group">
+            {preferredCandidates.map((candidate) => (
+              <CandidateCard
+                key={candidate.id}
+                candidate={candidate}
+                isSelected={selectedCandidates.some(
+                  (c) => c.id === candidate.id
+                )}
+                isPreferred={true}
+                selectedCandidates={selectedCandidates}
+                setSelectedCandidates={setSelectedCandidates}
+                selectedCandidatesData={selectedCandidatesData}
+                setSelectedCandidateData={setSelectedCandidateData}
+              />
+            ))}
+
+            <p className="recommendation-note">
+              Recommendations are based on your skill requirements and
+              candidate's performance.
+            </p>
+          </div>
+
+          <div className="candidate-group">
+            {candidates
+              .filter(
+                (candidate) =>
+                  !preferredCandidates.some((p) => p.id === candidate.id)
+              )
+              .map((candidate) => (
+                <CandidateCard
+                  key={candidate.id}
+                  candidate={candidate}
+                  isSelected={selectedCandidates.some(
+                    (c) => c.id === candidate.id
+                  )}
+                  isPreferred={false}
+                  selectedCandidates={selectedCandidates}
+                  setSelectedCandidates={setSelectedCandidates}
+                  selectedCandidatesData={selectedCandidatesData}
+                  setSelectedCandidateData={setSelectedCandidateData}
+                />
+              ))}
+          </div>
         </div>
       )}
     </div>

@@ -1,64 +1,100 @@
-
 .candidate-list-container {
-    width: 20%;
-    height: 100vh;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-  }
+  width: 20%;
+  height: 100vh;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.candidate-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  overflow-y: auto;
+  padding-bottom: 16px;
+}
+
+.candidate-group {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.selected-group {
+  background-color: #f6f6ef;
+}
+
+.recommendation-note {
+  font-size: 12px;
+  color: #666;
+  margin: 24px 0;
+  padding: 0 16px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  padding: 16px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.candidate-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #828282;
+  padding: 8px 12px;
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.candidate-card.preferred {
+  background-color: #f6f6ef;
   
-  .title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #000;
-    padding: 20px 10px;
-  }
-  
-  
-  .loading-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 160px;
-    color: #000;
-  }
-  
-  
-  .candidate-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #ddd;
-    padding: 8px;    
-  }
-  .candidate-card.selected {
-    background-color: #F6F6EF;
-  }
-  
-  .candidate-card:hover {
-    background-color: #f5f5f5;
-  }
-  
-  .candidate-name {
-    font-size: 14px;
-    color: #000;
-  }
-  
-  .add-button {
-    background: none;
-    color: white;
-    border: 1px solid #D3CDF5;
-    padding: 4px 8px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    color: #D3CDF5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } 
-  
-  
+}
+
+.candidate-card.selected {
+  opacity: 0.8;
+  background-color: white;
+}
+
+
+
+.candidate-name {
+  font-size: 14px;
+  color: #000;
+}
+
+.add-button {
+  background: none;
+  border: 1px solid #D3CDF5;
+  border-radius: 50%;
+  padding: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #D3CDF5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+
+.divider {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 12px 0;
+  margin-left: 16px;
+  margin-right: 16px;
+}

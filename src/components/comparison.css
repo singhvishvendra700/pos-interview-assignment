@@ -1,15 +1,33 @@
+.back-to-jobs{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px;
+    color: #828282;
+    background-color: white;
+}
 .wrapper{
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-.candidates{
-    display: flex;
-    flex-direction: column;
-    align-items: end;
+.header{
+    padding: 20px;
+    background: #fff;
+}
+.text-wrapper{
     padding: 5px;
     color: #828282;
     background-color: white;
+}
+
+.name {
+    color: gray;
+}
+
+.count {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }
 
 .content-wrapper{

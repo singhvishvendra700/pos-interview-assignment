@@ -5,6 +5,7 @@ import { API_URL } from "@/utils/config";
 const CandidateCard = ({
   candidate,
   isSelected,
+  isPreferred,
   selectedCandidates,
   setSelectedCandidates,
   setSelectedCandidateData,
@@ -60,11 +61,13 @@ const CandidateCard = ({
     setSelectedCandidates((prev) => [...prev, candiateItem]);
     updateCandidatesData();
   };
+
+  const cardClass = `candidate-card ${
+    isPreferred && !isSelected ? "preferred" : ""
+  } ${isSelected ? "selected" : ""}`;
+
   return (
-    <div
-      className={`candidate-card ${isSelected ? "selected" : ""}`}
-      onClick={() => onSelect(candidate)}
-    >
+    <div className={cardClass} onClick={() => onSelect(candidate)}>
       <span className="candidate-name">{candidate.name}</span>
       <button className="add-button">+</button>
     </div>
